@@ -7,6 +7,7 @@ import { TodoListPageComponent } from './todo-list-page/todo-list-page.component
 import { CollapsibleListComponent } from './collapsible-list/collapsible-list.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { CompletedTasksPageComponent } from './completed-tasks-page/completed-tasks-page.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CompletedTasksPageComponent } from './completed-tasks-page/completed-ta
     CompletedTasksPageComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
