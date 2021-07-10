@@ -1,0 +1,25 @@
+.header-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.header-title::after {
+  content: '_';
+  height: 0px;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 24px 0px 2px 2px;
+  opacity: 1;
+  animation: blink .7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
