@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
+  selector: 'header-todo',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
