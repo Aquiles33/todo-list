@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./collapsible-list.component.css']
 })
 export class CollapsibleListComponent implements OnInit {
+  public isOpen: boolean = true;
 
   constructor() { }
 

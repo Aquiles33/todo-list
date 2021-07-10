@@ -1,0 +1,121 @@
+.list-todo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.list-todo-content {
+  list-style: none;
+  padding: 0;
+  margin: 0px;
+  margin-top: 24px;
+}
+
+.list-todo-header {
+  display: none;  
+}
+
+.list-todo-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 24px;
+  max-width: 725px;  
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px 2px var(--shadow);
+  transform: scale(0.99);
+  transition: transform 0.2s ease-out;
+}
+
+.list-todo-item:hover {
+  cursor: pointer;
+  transform: scale(1);
+  box-shadow: 0 0 0 3px var(--shadow);
+}
+
+.trash-can-icon img {
+  width: 20px;
+  margin-left: 24px;
+}
+
+.empty-list {
+  text-align: center;
+  font-weight: bold;
+  margin: 16px 0px 20px 0px;
+  color: var(--text);
+}
+
+.task-description p{
+  width: 300px;
+  word-break: break-word;
+  text-align: center;
+  margin: 0;
+}
+
+.task-status-buttons-container {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  cursor: pointer;
+}
+
+.task-status-buttons-container input, label{
+  cursor: pointer;
+  margin-right: 8px;
+  color: var(--text);
+}
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #40e0d0;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}

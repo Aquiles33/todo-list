@@ -1,13 +1,12 @@
 .form-create-todo {
   display: flex;
   position: relative;
-  margin: 0 auto;
-  padding-bottom: 24px;
+  margin: 0 auto 40px auto;
   justify-content: center;
 }
 
 #input {
-  width: 400px;
+  width: 380px;
   margin-right: 16px;
   padding: 8px;
   outline: none;

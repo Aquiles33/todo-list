@@ -3,10 +3,15 @@
     <div class="collapse-todo-title">
       <p>Lista</p>
     </div>
-    <div class="collapse-todo-icon">
+    <div 
+      class="collapse-todo-icon" 
+      (click)="isOpen = !isOpen"
+      [ngClass]="{'__is-open': isOpen}"
+    >
       <i class="fas fa-chevron-down"></i>
     </div>
   </div>
-  <div class="collapse-todo-content">   
+  <div class="collapse-todo-content" *ngIf="isOpen">
+    <app-list-items></app-list-items>
   </div>
 </div>
