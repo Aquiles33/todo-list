@@ -1,8 +1,12 @@
 <div class="container animedown">
   <div class="page-todo-list">
     <header-todo [title]="title"></header-todo>
-    <app-collapsible-list></app-collapsible-list>  
-  
+
+    <app-collapsible-list 
+      [todoList]="todoList" 
+      (eventUpdateState)="updateStatus()"
+    ></app-collapsible-list>
+
     <div class="router-list-todo">
       <a routerLink="/" routerLinkActive="active">
         Criar tarefas

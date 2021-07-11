@@ -5,10 +5,10 @@
 
     <form class="form-create-todo" [formGroup]="form">
       <input 
-        #input
+        #input 
         type="text" 
         id="input" 
-        maxlength="30"
+        maxlength="30" 
         placeholder="Digite aqui" 
         formControlName="newTask"
         (keyup)="validateInputValue($event.target.value)"
@@ -22,13 +22,16 @@
       <button 
         class="button-create-task" 
         [disabled]="enabledButton"
-        (click)="addNewTask(this.formControls.newTask.value)" 
+        (click)="addNewTask(this.formControls.newTask.value)"
       >
         Criar tarefa
       </button>
     </form>
 
-    <app-collapsible-list [todoList]="todoList"></app-collapsible-list>
+    <app-collapsible-list 
+      [todoList]="todoList" 
+      (eventUpdateState)="updateStatus()"
+    ></app-collapsible-list>
 
     <div class="tasks-already-done">
       <a routerLink="/completed-tasks" routerLinkActive="active">

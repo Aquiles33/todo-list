@@ -3,15 +3,12 @@
     <div class="collapse-todo-title">
       <p>Lista</p>
     </div>
-    <div 
-      class="collapse-todo-icon" 
-      (click)="isOpen = !isOpen"
-      [ngClass]="{'__is-open': isOpen}"
-    >
+    <div class="collapse-todo-icon" (click)="isOpen = !isOpen" [ngClass]="{'__is-open': isOpen}">
       <i class="fas fa-chevron-down"></i>
     </div>
   </div>
   <div class="collapse-todo-content" *ngIf="isOpen">
-    <app-list-items [todoList]="todoList" (eventResetList)="resetList()"></app-list-items>
+    <app-list-items [todoList]="todoList" (eventResetList)="resetList()" (eventUpdateState)="updateStatus()">
+    </app-list-items>
   </div>
 </div>

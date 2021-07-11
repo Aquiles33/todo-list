@@ -19,7 +19,7 @@
   align-items: center;
   padding: 20px;
   margin: 24px 0px;
-  max-width: 725px;  
+  max-width: 750px;  
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 15px 2px var(--shadow);
@@ -35,6 +35,11 @@
 
 .trash-can-icon img {
   width: 20px;
+  margin-left: 24px;
+}
+
+.edit-icon img {
+  width: 17px;
   margin-left: 24px;
 }
 

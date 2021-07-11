@@ -14,7 +14,7 @@
             type="radio" 
             name="radio-{{ task.id_ }}"
             id="todo-{{ task.id_ }}"
-            (change)="setValueChecked($event.target.id, task)"
+            (change)="setValueChecked($event, task)"
             [checked]="task.status_ === 'todo'"
             class="button-radio option-input checkbox"
           >
@@ -25,7 +25,7 @@
             type="radio" 
             name="radio-{{ task.id_ }}"
             id="inprogress-{{ task.id_ }}"
-            (change)="setValueChecked($event.target.id, task)"
+            (change)="setValueChecked($event, task)"
             [checked]="task.status_ === 'inprogress'"
             class="button-radio option-input checkbox"
           >
@@ -36,15 +36,25 @@
             type="radio" 
             name="radio-{{ task.id_ }}"            
             id="done-{{ task.id_ }}"
-            (change)="setValueChecked($event.target.id, task)"
+            (change)="setValueChecked($event, task)"
             [checked]="task.status_ === 'done'"
             class="button-radio option-input checkbox"
           >
           <label for="done-{{ task.id_ }}">done</label>
         </div>
 
-        <div class="trash-can-icon">
-          <img src="../../assets/trash-can.png" alt="trash icon" (click)="deleteTask($event.target.parentNode)">
+        <div class="trash-can-icon" *ngIf="todoListPage">
+          <img 
+            alt="trash icon" 
+            src="../../assets/trash-can.png" 
+            (click)="deleteTask($event.target.parentNode)">
+        </div>
+
+        <div class="edit-icon" *ngIf="todoListPage">
+          <img 
+            alt="edit icon" 
+            src="../../assets/edit.png" 
+            (click)="editTask($event, task)">
         </div>
       </li>
     </ng-container>

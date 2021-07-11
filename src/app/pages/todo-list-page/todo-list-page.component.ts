@@ -1,4 +1,5 @@
-import { ITaskTemplate } from '../../shared/ITaskTemplate';
+import { StateService } from 'src/app/services/stateService.service';
+import { ITaskTemplate } from '../../shared/model/ITaskTemplate';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
@@ -17,7 +18,10 @@ export class TodoListPageComponent implements OnInit {
   public enabledButton: boolean = true;
   public characterLimit: boolean = false;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+    private fb: FormBuilder,
+    private service: StateService,
+    ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -39,22 +43,21 @@ export class TodoListPageComponent implements OnInit {
   }
 
   addNewTask(inputValue) {
-    let todoListStorage: ITaskTemplate[] = JSON.parse(sessionStorage.getItem('todoList'));
-
     if (inputValue && inputValue.trim() !== '') {
-      if (!todoListStorage) {
+      if (!this.service.getListTodo()) {
         this.todoList = [];
         this.taskId = 1;
       }
       else {
-        this.todoList = todoListStorage;
+        this.todoList = this.service.getListTodo();
       }
 
-      let obj = new ITaskTemplate(this.taskId, inputValue);
-      this.todoList.push(obj);
+      let newTask = new ITaskTemplate(this.taskId, inputValue);
+      this.todoList.push(newTask);
       this.taskId++
 
-      sessionStorage.setItem('todoList', JSON.stringify(this.todoList));
+      this.service.postListTodo(this.todoList);
+      this.todoList = this.service.getListTodo().filter(task => task.status_ !== 'done');
     }
     else {
       this.emptyField = true;
@@ -70,14 +73,23 @@ export class TodoListPageComponent implements OnInit {
   }
 
   checkSessionStorage() {
-    let todoListStorage: ITaskTemplate[] = JSON.parse(sessionStorage.getItem('todoList'));
+    let todoListStorage = this.service.getListTodo();
     if (todoListStorage && todoListStorage.length > 0) {
-      this.todoList = todoListStorage;
-      this.taskId = this.todoList[this.todoList.length - 1].id_ + 1;
+      if(todoListStorage.every(task => task.status_ === 'done')) {
+        this.todoList = [];
+        this.taskId = todoListStorage[todoListStorage.length - 1].id_ + 1;
+      } 
+      else {
+        this.todoList = todoListStorage.filter(task => task.status_ !== 'done');
+      }
     }
     else {
       this.todoList = [];
     }
+  }
+
+  updateStatus() {
+    this.checkSessionStorage();
   }
 
 }

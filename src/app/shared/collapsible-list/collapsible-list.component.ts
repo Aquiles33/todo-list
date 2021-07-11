@@ -1,5 +1,6 @@
-import { ITaskTemplate } from '../ITaskTemplate';
-import { Component, OnInit, Input } from '@angular/core';
+import { StateService } from 'src/app/services/stateService.service';
+import { ITaskTemplate } from '../model/ITaskTemplate';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-collapsible-list',
@@ -7,16 +8,22 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./collapsible-list.component.css']
 })
 export class CollapsibleListComponent implements OnInit {
-  public isOpen: boolean = true;
-
+  @Output() eventUpdateState = new EventEmitter();
   @Input() todoList: ITaskTemplate[];
 
-  constructor() { }
+  public isOpen: boolean = true;
 
-  ngOnInit(): void {}
+  constructor(private service: StateService) { }
+
+  ngOnInit(): void { }
 
   resetList() {
     this.todoList = [];
+  }
+
+  updateStatus() {
+    this.todoList = this.service.getListTodo();
+    this.eventUpdateState.emit();
   }
 
 }
