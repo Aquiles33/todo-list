@@ -9,6 +9,7 @@ import { StateService } from 'src/app/services/stateService.service';
 })
 export class CompletedTasksPageComponent implements OnInit {
   public title: string = 'Lista de tarefas concluídas';
+  public emptyListMessage: string = 'Não há tarefas concluídas no momento!';
   public todoList: ITaskTemplate[] = [];
 
   constructor(private service: StateService) { }

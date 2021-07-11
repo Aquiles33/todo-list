@@ -3,7 +3,8 @@
     <header-todo [title]="title"></header-todo>
 
     <app-collapsible-list 
-      [todoList]="todoList" 
+      [todoList]="todoList"
+      [emptyListMessage]="emptyListMessage"
       (eventUpdateState)="updateStatus()"
     ></app-collapsible-list>
 

@@ -10,6 +10,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class CollapsibleListComponent implements OnInit {
   @Output() eventUpdateState = new EventEmitter();
   @Input() todoList: ITaskTemplate[];
+  @Input() emptyListMessage: string;
 
   public isOpen: boolean = true;
 

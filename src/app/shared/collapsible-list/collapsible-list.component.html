@@ -8,7 +8,12 @@
     </div>
   </div>
   <div class="collapse-todo-content" *ngIf="isOpen">
-    <app-list-items [todoList]="todoList" (eventResetList)="resetList()" (eventUpdateState)="updateStatus()">
+    <app-list-items 
+      [todoList]="todoList" 
+      [emptyListMessage]="emptyListMessage"
+      (eventResetList)="resetList()" 
+      (eventUpdateState)="updateStatus()"
+    >
     </app-list-items>
   </div>
 </div>

@@ -9,6 +9,7 @@ import { ITaskTemplate } from '../model/ITaskTemplate';
 })
 export class ListItemsComponent implements OnInit {
   @Input() todoList: ITaskTemplate[];
+  @Input() emptyListMessage: string;
   @Output() eventResetList = new EventEmitter();
   @Output() eventUpdateState = new EventEmitter();
 

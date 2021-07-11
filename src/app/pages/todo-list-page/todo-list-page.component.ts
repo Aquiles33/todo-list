@@ -9,14 +9,15 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./todo-list-page.component.css']
 })
 export class TodoListPageComponent implements OnInit {
-  @ViewChild("input", { static: false }) InputFocus: ElementRef;
-  public title: string = 'Crie aqui sua lista de tarefas';
   public form: FormGroup;
   public taskId: number = 1;
-  public todoList: ITaskTemplate[] = [];
   public emptyField: boolean = false;
   public enabledButton: boolean = true;
   public characterLimit: boolean = false;
+  public todoList: ITaskTemplate[] = [];
+  public title: string = 'Crie aqui sua lista de tarefas';
+  public emptyListMessage: string = 'Não há tarefas no momento!';
+  @ViewChild("input", { static: false }) InputFocus: ElementRef;
 
   constructor(
     private fb: FormBuilder,

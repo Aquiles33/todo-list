@@ -1,7 +1,7 @@
 <form class="list-todo-container">
   <ul class="list-todo-content">
     <div class="empty-list" *ngIf="!todoList || !todoList.length">
-      Não há tarefas no momento!
+      {{ emptyListMessage }}
     </div>
     <ng-container *ngIf="todoList">
       <li class="list-todo-item" *ngFor="let task of todoList" id="{{ task.id_ }}">
