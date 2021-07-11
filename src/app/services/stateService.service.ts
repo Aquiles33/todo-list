@@ -8,12 +8,12 @@ export class StateService {
 
   constructor() { }
 
-  getListTodo() {
+  getTodoList() {
     let todoListStorage: ITaskTemplate[] = JSON.parse(sessionStorage.getItem('todoList'));
     return todoListStorage;
   }
 
-  postListTodo(listTodo) {
+  postTodoList(listTodo) {
     sessionStorage.setItem('todoList', JSON.stringify(listTodo));
   }
 

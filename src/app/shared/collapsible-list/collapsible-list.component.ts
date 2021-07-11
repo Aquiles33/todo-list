@@ -23,7 +23,7 @@ export class CollapsibleListComponent implements OnInit {
   }
 
   updateState() {
-    this.todoList = this.service.getListTodo();
+    this.todoList = this.service.getTodoList();
     this.eventUpdateState.emit();
   }
 

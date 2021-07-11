@@ -27,16 +27,16 @@ export class ListItemsComponent implements OnInit {
   }
 
   setValueChecked(checkedValue, targetTask) {
-    let todoList = this.service.getListTodo();
+    let todoList = this.service.getTodoList();
     if (todoList && todoList.length > 0) {
       todoList
         .filter(tasks => tasks.id_ == targetTask.id_)
         .filter(task => task.status_ = checkedValue.target.id.slice(0, -2));
-      this.service.postListTodo(todoList);
+      this.service.postTodoList(todoList);
       this.eventUpdateState.emit();
     }
 
-    if (window.location.pathname === '/') {            
+    if (window.location.pathname === '/') {
       if (checkedValue.target.id.slice(0, -2) === 'done') {
         this.service.fadeOut(checkedValue.target.parentNode.parentNode);
         setTimeout(() => {
@@ -45,14 +45,14 @@ export class ListItemsComponent implements OnInit {
         }, 400);
       }
 
-      if (this.service.getListTodo()) {
-        if (this.service.getListTodo().every(task => task.status_ === 'done')) {
+      if (this.service.getTodoList()) {
+        if (this.service.getTodoList().every(task => task.status_ === 'done')) {
           this.eventUpdateState.emit();
         }
       }
     }
 
-    if (window.location.pathname === '/completed-tasks') {      
+    if (window.location.pathname === '/completed-tasks') {
       if (checkedValue.target.id.slice(0, -2) !== 'done') {
         this.service.fadeOut(checkedValue.target.parentNode.parentNode);
         setTimeout(() => {
@@ -61,8 +61,8 @@ export class ListItemsComponent implements OnInit {
         }, 400);
       }
 
-      if (this.service.getListTodo()) {
-        if (this.service.getListTodo().every(task => task.status_ !== 'done')) {
+      if (this.service.getTodoList()) {
+        if (this.service.getTodoList().every(task => task.status_ !== 'done')) {
           this.eventUpdateState.emit();
         }
       }
@@ -70,9 +70,9 @@ export class ListItemsComponent implements OnInit {
   }
 
   deleteTask(event) {
-    let todoList = this.service.getListTodo();
+    let todoList = this.service.getTodoList();
     todoList = todoList.filter(tasks => (tasks.id_ != event.parentNode.id));
-    this.service.postListTodo(todoList)
+    this.service.postTodoList(todoList)
 
     this.service.fadeOut(event.parentNode);
     setTimeout(() => {
@@ -88,15 +88,15 @@ export class ListItemsComponent implements OnInit {
   }
 
   editTask(event, taskToBeEdited: ITaskTemplate) {
-    let todoList = this.service.getListTodo();
+    let todoList = this.service.getTodoList();
     let editedText = window.prompt('', taskToBeEdited.description_);
-    
+
     if (editedText) {
       event.target.parentNode.parentNode.remove();
       todoList
         .filter(tasks => tasks.id_ == taskToBeEdited.id_)
         .filter(task => task.description_ = editedText);
-      this.service.postListTodo(todoList);
+      this.service.postTodoList(todoList);
 
       this.eventUpdateState.emit();
     }

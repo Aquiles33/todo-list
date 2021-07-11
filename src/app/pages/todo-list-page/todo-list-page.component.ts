@@ -22,7 +22,7 @@ export class TodoListPageComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: StateService,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -45,20 +45,20 @@ export class TodoListPageComponent implements OnInit {
 
   addNewTask(inputValue) {
     if (inputValue && inputValue.trim() !== '') {
-      if (!this.service.getListTodo()) {
+      if (!this.service.getTodoList()) {
         this.todoList = [];
         this.taskId = 1;
       }
       else {
-        this.todoList = this.service.getListTodo();
+        this.todoList = this.service.getTodoList();
       }
 
       let newTask = new ITaskTemplate(this.taskId, inputValue);
       this.todoList.push(newTask);
       this.taskId++
 
-      this.service.postListTodo(this.todoList);
-      this.todoList = this.service.getListTodo().filter(task => task.status_ !== 'done');
+      this.service.postTodoList(this.todoList);
+      this.todoList = this.service.getTodoList().filter(task => task.status_ !== 'done');
     }
     else {
       this.emptyField = true;
@@ -74,7 +74,7 @@ export class TodoListPageComponent implements OnInit {
   }
 
   checkSessionStorage() {
-    let todoListStorage = this.service.getListTodo();
+    let todoListStorage = this.service.getTodoList();
     if (todoListStorage && todoListStorage.length > 0) {
       if(todoListStorage.every(task => task.status_ === 'done')) {
         this.todoList = [];

@@ -19,7 +19,7 @@ export class CompletedTasksPageComponent implements OnInit {
   }
 
   checkSessionStorage() {
-    let todoListStorage = this.service.getListTodo();
+    let todoListStorage = this.service.getTodoList();
 
     if (todoListStorage && todoListStorage.length > 0)
       this.todoList = todoListStorage.filter(task => task.status_ === 'done');
