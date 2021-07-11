@@ -1,8 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodoListPageComponent } from './todo-list-page/todo-list-page.component';
-import { CompletedTasksPageComponent } from './completed-tasks-page/completed-tasks-page.component';
+import { TodoListPageComponent } from './pages/todo-list-page/todo-list-page.component';
+import { CompletedTasksPageComponent } from './pages/completed-tasks-page/completed-tasks-page.component';
 
 const routes: Routes = [
   {

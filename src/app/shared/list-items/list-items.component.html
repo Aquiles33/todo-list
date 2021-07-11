@@ -1,0 +1,52 @@
+<form class="list-todo-container">
+  <ul class="list-todo-content">
+    <div class="empty-list" *ngIf="!todoList || !todoList.length">
+      Não há tarefas no momento!
+    </div>
+    <ng-container *ngIf="todoList">
+      <li class="list-todo-item" *ngFor="let task of todoList" id="{{ task.id_ }}">
+        <div class="task-description">
+          <p>{{ task.description_ }}</p>
+        </div>
+
+        <div class="task-status-buttons-container">
+          <input 
+            type="radio" 
+            name="radio-{{ task.id_ }}"
+            id="todo-{{ task.id_ }}"
+            (change)="setValueChecked($event.target.id, task)"
+            [checked]="task.status_ === 'todo'"
+            class="button-radio option-input checkbox"
+          >
+          <label for="todo-{{ task.id_ }}">todo</label>
+        </div>
+        <div class="task-status-buttons-container">
+          <input 
+            type="radio" 
+            name="radio-{{ task.id_ }}"
+            id="inprogress-{{ task.id_ }}"
+            (change)="setValueChecked($event.target.id, task)"
+            [checked]="task.status_ === 'inprogress'"
+            class="button-radio option-input checkbox"
+          >
+          <label for="inprogress-{{ task.id_ }}">in progress</label>
+        </div>
+        <div class="task-status-buttons-container">
+          <input 
+            type="radio" 
+            name="radio-{{ task.id_ }}"            
+            id="done-{{ task.id_ }}"
+            (change)="setValueChecked($event.target.id, task)"
+            [checked]="task.status_ === 'done'"
+            class="button-radio option-input checkbox"
+          >
+          <label for="done-{{ task.id_ }}">done</label>
+        </div>
+
+        <div class="trash-can-icon">
+          <img src="../../assets/trash-can.png" alt="trash icon" (click)="deleteTask($event.target.parentNode)">
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</form>

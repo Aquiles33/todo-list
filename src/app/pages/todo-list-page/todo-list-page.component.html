@@ -1,0 +1,40 @@
+<div class="container animedown">
+  <div class="page-todo-list">
+
+    <header-todo [title]="title"></header-todo>
+
+    <form class="form-create-todo" [formGroup]="form">
+      <input 
+        #input
+        type="text" 
+        id="input" 
+        maxlength="30"
+        placeholder="Digite aqui" 
+        formControlName="newTask"
+        (keyup)="validateInputValue($event.target.value)"
+      >
+      <span class="error-message" *ngIf="emptyField">
+        Este campo é obrigatório.
+      </span>
+      <span class="error-message-char-limit" *ngIf="characterLimit">
+        Este campo tem um limite de 30 caracteres.
+      </span>
+      <button 
+        class="button-create-task" 
+        [disabled]="enabledButton"
+        (click)="addNewTask(this.formControls.newTask.value)" 
+      >
+        Criar tarefa
+      </button>
+    </form>
+
+    <app-collapsible-list [todoList]="todoList"></app-collapsible-list>
+
+    <div class="tasks-already-done">
+      <a routerLink="/completed-tasks" routerLinkActive="active">
+        Tarefas já realizadas
+      </a>
+      <i class="fas fa-check"></i>
+    </div>
+  </div>
+</div>

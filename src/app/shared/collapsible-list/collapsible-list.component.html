@@ -12,6 +12,6 @@
     </div>
   </div>
   <div class="collapse-todo-content" *ngIf="isOpen">
-    <app-list-items></app-list-items>
+    <app-list-items [todoList]="todoList" (eventResetList)="resetList()"></app-list-items>
   </div>
 </div>

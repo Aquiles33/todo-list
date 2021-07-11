@@ -7,7 +7,6 @@
   list-style: none;
   padding: 0;
   margin: 0px;
-  margin-top: 24px;
 }
 
 .list-todo-header {
@@ -15,10 +14,11 @@
 }
 
 .list-todo-item {
+  opacity: 1;
   display: flex;
   align-items: center;
   padding: 20px;
-  margin-bottom: 24px;
+  margin: 24px 0px;
   max-width: 725px;  
   background: #fff;
   border-radius: 5px;

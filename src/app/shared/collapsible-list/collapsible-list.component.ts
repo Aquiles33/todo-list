@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ITaskTemplate } from '../ITaskTemplate';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-collapsible-list',
@@ -8,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class CollapsibleListComponent implements OnInit {
   public isOpen: boolean = true;
 
+  @Input() todoList: ITaskTemplate[];
+
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  resetList() {
+    this.todoList = [];
   }
 
 }
