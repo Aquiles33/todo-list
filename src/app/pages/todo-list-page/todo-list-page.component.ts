@@ -89,7 +89,7 @@ export class TodoListPageComponent implements OnInit {
     }
   }
 
-  updateStatus() {
+  updateState() {
     this.checkSessionStorage();
   }
 

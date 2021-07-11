@@ -27,7 +27,7 @@ export class CompletedTasksPageComponent implements OnInit {
       this.todoList = [];
   }
 
-  updateStatus() {
+  updateState() {
     this.checkSessionStorage();
   }
 
