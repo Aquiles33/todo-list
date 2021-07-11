@@ -43,14 +43,14 @@
           <label for="done-{{ task.id_ }}">done</label>
         </div>
 
-        <div class="trash-can-icon" *ngIf="todoListPage">
+        <div class="trash-can-icon" *ngIf="this.service.getRoute('/')">
           <img 
             alt="trash icon" 
             src="../../assets/trash-can.png" 
             (click)="deleteTask($event.target.parentNode)">
         </div>
 
-        <div class="edit-icon" *ngIf="todoListPage">
+        <div class="edit-icon" *ngIf="this.service.getRoute('/')">
           <img 
             alt="edit icon" 
             src="../../assets/edit.png" 

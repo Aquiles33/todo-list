@@ -13,8 +13,6 @@ export class ListItemsComponent implements OnInit {
   @Output() eventResetList = new EventEmitter();
   @Output() eventUpdateState = new EventEmitter();
 
-  public todoListPage: boolean = window.location.pathname === '/'
-
   constructor(private service: StateService) { }
 
   ngOnInit(): void {
@@ -36,7 +34,7 @@ export class ListItemsComponent implements OnInit {
       this.eventUpdateState.emit();
     }
 
-    if (window.location.pathname === '/') {
+    if (this.service.getRoute('/')) {
       if (checkedValue.target.id.slice(0, -2) === 'done') {
         this.service.fadeOut(checkedValue.target.parentNode.parentNode);
         setTimeout(() => {
@@ -52,7 +50,7 @@ export class ListItemsComponent implements OnInit {
       }
     }
 
-    if (window.location.pathname === '/completed-tasks') {
+    if (this.service.getRoute('/completed-tasks')) {
       if (checkedValue.target.id.slice(0, -2) !== 'done') {
         this.service.fadeOut(checkedValue.target.parentNode.parentNode);
         setTimeout(() => {

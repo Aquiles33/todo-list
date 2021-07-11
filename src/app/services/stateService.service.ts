@@ -21,4 +21,8 @@ export class StateService {
     el.style.transition = '0.5s';
     el.style.opacity = 0;
   }
+
+  getRoute(path) {
+    return window.location.pathname === path;
+  }
 }
